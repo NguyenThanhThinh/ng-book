@@ -1,0 +1,5 @@
+<button
+    [class]="seat.Status ? checkedSeat ?'btn btn-success m-1':'btn btn-danger m-1' : checkedSeat ?'btn btn-success m-1':'btn btn-secondary m-1'"
+    [disabled]="seat.Status" (click)="bookSeat()">{{seat.NumberSeat}}
+</button>
+<br *ngIf="(i+1) % 6 ==0" />
