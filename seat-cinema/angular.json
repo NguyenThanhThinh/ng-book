@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "seat-cinema"
+    }
+  },
+  "defaultProject": "seat-cinema",
+  "cli": {
+    "analytics": "3912621b-1176-499d-98df-5355a51b06c4"
+  }
 }

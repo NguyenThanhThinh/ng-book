@@ -11,6 +11,7 @@ import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 export class ListSeatComponent implements OnInit {
   seats: Array<Seat>;
   checkedseats: any[] = []
+  totalMoney: number = 0;
 
   constructor() {
     this.seats = this.getAllSeat();
@@ -32,16 +33,23 @@ export class ListSeatComponent implements OnInit {
   }
 
   bookSeat(seat: any) {
+    console.info(seat);
     if (seat.CheckedSeat) {
       this.checkedseats.push(seat);
+      this.totalMoney += seat.Price;
+      console.info(this.totalMoney);
     } else {
 
       for (let index = 0; index < this.checkedseats.length; index++) {
         let obj: any = this.checkedseats[index];
 
-        if (obj.NumberSeat === seat.NumberSeat) this.checkedseats.splice(index, 1);
+        if (obj.NumberSeat === seat.NumberSeat) {
+          this.checkedseats.splice(index, 1);
+          this.totalMoney -= obj.Price;
+        }
 
       }
+
     }
   }
   @ViewChildren(SeatComponent) tagSeat: QueryList<SeatComponent>;
@@ -52,7 +60,10 @@ export class ListSeatComponent implements OnInit {
 
       let obj: any = this.checkedseats[index];
 
-      if (obj.NumberSeat === numberSeat) this.checkedseats.splice(index, 1);
+      if (obj.NumberSeat === numberSeat) {
+        this.checkedseats.splice(index, 1);
+        this.totalMoney -= obj.Price;
+      }
 
     }
     this.tagSeat.forEach((obj: SeatComponent) => {

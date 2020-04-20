@@ -11,9 +11,10 @@
             <span class="text-info m-1 pb-1" *ngFor="let checkedseat of checkedseats">
                 Ghế số {{checkedseat.NumberSeat}} - {{checkedseat.Price |currency:'VN' }}
                 <button type="button" (click)="cancelSeat(checkedseat.NumberSeat)"
-                    class="btn btn-danger">Cancel</button>
+                    class="btn btn-danger mb-1">Cancel</button>
             </span>
 
         </div>
+
     </div>
-</div>
+    <p class="text-right text-info">{{totalMoney |currency:'VN'}}</p>
